@@ -1,0 +1,49 @@
+[project]
+name = "fastapi-monolith-template"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "alembic>=1.16.1",
+    "asyncpg>=0.30.0",
+    "black>=25.1.0",
+    "fastapi>=0.115.12",
+    "httpx>=0.28.1",
+    "isort>=6.0.1",
+    "minio>=7.2.15",
+    "pydantic-settings>=2.9.1",
+    "pytest>=8.3.5",
+    "ruff>=0.11.12",
+    "sqlalchemy>=2.0.41",
+    "uvicorn>=0.34.2",
+]
+
+[tool.black]
+line-length = 88
+target-version = ["py312"]
+exclude = ["alembic", ".venv", "venv", "migrations"]
+
+[tool.isort]
+profile = "black"
+line_length = 88
+skip = ["alembic", ".venv", "venv", "migrations"]
+known_first_party = ["src"]
+known_third_party = ["fastapi", "sqlalchemy", "pydantic"]
+combine_as_imports = true
+
+[tool.ruff]
+line-length = 88
+target-version = "py312"
+exclude = ["alembic", ".venv", "venv", "migrations"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "C4", "SIM", "RUF"]
+ignore = ["E501", "F403", "F405"]
+
+[tool.ruff.lint.per-file-ignores]
+"__init__.py" = ["F401"]  # ignore unused imports in init
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
